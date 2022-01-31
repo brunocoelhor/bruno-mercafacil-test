@@ -1,0 +1,4 @@
+jest.config.ts
+dist
+/*.js
+/prisma/prisma-environment-jest.js

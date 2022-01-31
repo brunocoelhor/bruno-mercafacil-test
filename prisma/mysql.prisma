@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client2"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_MYSQL_URL")
+}
+
+model contacts {
+  id      Int    @id @unique(map: "id") @default(autoincrement()) @db.UnsignedInt
+  nome    String @db.VarChar(200)
+  celular String @db.VarChar(20)
+}

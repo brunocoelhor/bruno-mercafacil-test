@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client1"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_PG_URL")
+}
+
+model contacts {
+  id      Int    @id @default(autoincrement())
+  nome    String @unique @db.VarChar(100)
+  celular String @db.VarChar(13)
+}

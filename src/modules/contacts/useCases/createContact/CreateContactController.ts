@@ -6,13 +6,13 @@ import { formatName } from '../../../../utils/formatName';
 export class CreateContactController {
   async handle(request: Request, response: Response) {
     const data = request.body.contacts; 
-    // const client = 'varejao';
-    const client = 'macapa';
+    const client = 'varejao';
+    // const client = 'macapa';    
     
     const contacts = data.map((contact) => ({
         nome: formatName(contact.name,client),
         celular: formatCellphone(contact.cellphone, client)
-      })); 
+    })); 
 
     const createContactUseCase = new CreateContactUseCase();
 
@@ -20,6 +20,6 @@ export class CreateContactController {
       contacts
     }, client);
 
-    return response.json({success: true, result});
+    return response.json({result});
   }
 }

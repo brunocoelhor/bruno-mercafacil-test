@@ -1,0 +1,85 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API Desafio Back-end Mercafacil",
+      "description": "Essa API faz parte do processo seletivo para a vaga de desenvolvedor  backend da empresa Mercafacil",
+      "contact": {
+        "email": "brunocoelho.r@gmail.com"
+      },
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3333/",
+        "description": "API de teste"
+      }
+    ],
+    "paths": {
+        "/contacts": {
+            "post": {
+                "summary": "Cadastro de contatos",
+                "description": "Esta rota é responsável por cadastrar novos contatos",
+                "tags": ["Contatos"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                            "$ref": "#/components/schemas/Contact"
+                            },
+                            "examples": {
+                                "contacts": {
+                                    "value": {
+                                        "contacts": [
+                                            {
+                                                "name": "Marina Rodrigues",
+                                                "cellphone": "(55) 41 99694-1919"
+                                            },
+                                            {
+                                                "name": "Nicolas Rodrigues",
+                                                "cellphone": "5541954122723"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "O contato já existe"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Contact"
+                                }
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+    },
+    "components": {
+        "schemas": {
+            "Contact": {
+                "type": "object",
+                "properties" : {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "cellphone": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}    

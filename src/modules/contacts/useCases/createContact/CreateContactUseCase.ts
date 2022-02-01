@@ -2,7 +2,7 @@ import { prismaPg, prismaMysql } from '../../../../database/prismaClient';
 
 export class CreateContactUseCase {
   async execute(contacts, client) {
-    let contact;
+    let contact; 
 
     if (client === 'macapa') {
       contact = await prismaMysql.contacts.createMany({

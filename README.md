@@ -29,6 +29,8 @@ yarn prisma generate --schema prisma/mysql.prisma
 ``` 
 
 ### Comando para a criação de tabelas e inclusão de dados no Postgres e MySQL. Neste comando é necessário colocar o nome da migration que está sendo criada, para identificação futura caso necessário.
+
+É necessário remover os arquivos da criação da primeira migrate conforme informado na [documentação do prisma](https://www.prisma.io/docs/concepts/components/prisma-migrate/prisma-migrate-limitations-issues#you-cannot-automatically-switch-database-providers).
 ```
 $ yarn prisma migrate dev --schema=./prisma/pg.prisma
 

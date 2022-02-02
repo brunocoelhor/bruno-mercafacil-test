@@ -17,9 +17,12 @@
     "paths": {
         "/contacts": {
             "post": {
-                "summary": "Cadastro de contatos",
-                "description": "Esta rota é responsável por cadastrar novos contatos",
-                "tags": ["Contatos"],
+                "summary": "Create new contacts",
+                "description": "This route is responsible for registering new contacts",
+                "tags": ["Contact"],
+                "security": [
+                    {"bearerAuth":[]}
+                  ],                
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -47,7 +50,10 @@
                 },
                 "responses": {
                     "400": {
-                        "description": "O contato já existe"
+                        "description": "Name is required"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
                     },
                     "200": {
                         "description": "OK",
@@ -63,10 +69,16 @@
                 }
             },
             "get": {
-                "description": "Searching all contacts",
-                "summary": "This route is responsible for searching all cities",
-                "tags": ["Contatos"],
+                "summary": "Searching all contacts",
+                "description": "This route is responsible for searching all contacts",
+                "tags": ["Contact"],
+                "security": [
+                    {"bearerAuth":[]}
+                  ],
                 "responses": {
+                    "401": {
+                        "description": "Unauthorized"
+                    },
                     "200": {
                         "description": "OK",
                         "content": {
@@ -76,6 +88,47 @@
                                     "items": {
                                     "$ref": "#/components/schemas/Contact"
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "post": {
+                "summary": "Create new users",
+                "description": "This route is responsible for registering new users",
+                "tags": ["Users"],       
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                            "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "users": {
+                                    "value": {
+                                            "name":"NewUser",
+                                            "username":"newuser",
+                                            "password": "123456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "User already exists / All fields are required"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
                                 }
                             }
                         }
@@ -99,7 +152,31 @@
                         "type": "string"
                     }
                 }
+            },
+            "User": {
+                "type": "object",
+                "properties" : {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "username": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
             }
-        }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+              "type": "http",
+              "scheme": "bearer",
+              "bearerFormat": "JWT"
+            }
+          }
     }
 }    

@@ -3,11 +3,11 @@ import { FindAllContactUseCase } from './FindAllContactUseCase';
 
 export class FindAllContactController {
     async handle(request: Request, response: Response) {
-        const client = 'varejao';
+        const {username} = request;
 
         const findAllContactUseCase = new FindAllContactUseCase();
 
-        const contacts = await findAllContactUseCase.execute(client);
+        const contacts = await findAllContactUseCase.execute(username);
 
         return response.json(contacts);
     }

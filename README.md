@@ -67,7 +67,7 @@ $ yarn test --coverage
 ```
 ![Testes](./images/testes.png)
 
-### É possível ainda acessar a documentação da aplicação desenvolvida no endereço
+### É possível ainda acessar a documentação da aplicação desenvolvida no endereço, as rotas que possuem um cadeado deve-se realizar a autenticação antes clicando no botão Authorize e colocando  token que pode ser obtido na rota http://localhost:3333/login no Insomnia.
 
 ```
 http://localhost:3333/api-docs/

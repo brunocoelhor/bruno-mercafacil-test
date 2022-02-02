@@ -42,17 +42,38 @@ $ yarn prisma migrate dev --schema=./prisma/mysql.prisma
 ```
 $ yarn dev
 ```
+### Criar os usuários Varejão e Macapá pela rota  http://localhost:3333/users
+
+```
+{
+	"name":"Varejão",
+	"username":"varejao",
+	"password": "123456"
+ }
+
+ {
+	"name":"Macapa",
+	"username":"macapa",
+	"password": "123456"
+ }
+```
+
+
 ### Comando para executar os testes desenvolvidos para o projeto.
 ```
 $ yarn test
 ou
 $ yarn test --coverage
 ```
+![Testes](./images/testes.png)
+
 ### É possível ainda acessar a documentação da aplicação desenvolvida no endereço
 
 ```
 http://localhost:3333/api-docs/
 ```
+
+![Swagger](./images/swagger.png)
 
 ### Comando para build e rodar a aplicação
 
@@ -80,12 +101,12 @@ $ node ./dist/server.js
 O arquivo `insomnia_bruno_mercafacil.json` tem a exportação para execução das rotas para testes no programa [Insominia](https://insomnia.rest/download)
 ---
 
+![Indomnia](./images/insomnia.png)
+
 ## Rotas - Mais detalhes das rotas pode ser visto na documentação no [SWAGGER](http://localhost:3333/api-docs/)
 
 ---
-
 [POST] `http://localhost:3333/login` - Login do usuário para realizar operações no sistema (username: varejo/macapa - password:123456 )
----
 
 [POST] `http://localhost:3333/users` - Criação de um novo usuário. 
 {
@@ -93,7 +114,6 @@ O arquivo `insomnia_bruno_mercafacil.json` tem a exportação para execução da
     "username":"novousuario",
     "password": "123456"
 }
----
 
 [POST] `http://localhost:3333/contacts` - Cadastro de novos contatos, necessita de authorização
 {
@@ -108,8 +128,6 @@ O arquivo `insomnia_bruno_mercafacil.json` tem a exportação para execução da
 			}
 	]
 }
-
----
 
 [GET] `http://localhost:3333/contacts` - Lista todas as cidades cadastradas para o usuário, necessita de authorização.
 

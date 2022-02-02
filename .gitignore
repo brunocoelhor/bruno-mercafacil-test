@@ -2,3 +2,5 @@ node_modules
 dist
 docs
 prisma/generated/
+prisma/migrations/
+coverage

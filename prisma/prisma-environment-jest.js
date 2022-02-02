@@ -4,7 +4,7 @@ const { execSync } = require("child_process");
 const { resolve } = require("path");
 const { Client } = require("pg");
 
-const prismaCli = "./node_modules/.bin/prisma2";
+const prismaCli = "./node_modules/.bin/prisma";
 
 require("dotenv").config({
   path: resolve(__dirname, "..", ".env.test"),

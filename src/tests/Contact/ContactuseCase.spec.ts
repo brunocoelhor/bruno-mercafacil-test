@@ -4,7 +4,7 @@
 
 import { CreateContactUseCase } from '../../modules/contacts/useCases/createContact/CreateContactUseCase';
 
- describe('Create user', () => {
+ describe('Criar contatos', () => {
  
      let createContactUseCase: CreateContactUseCase;
  
@@ -12,7 +12,7 @@ import { CreateContactUseCase } from '../../modules/contacts/useCases/createCont
          createContactUseCase = new CreateContactUseCase();
      });
     
-     it('It should allow creating a new contact', async () => {
+     it('Deve permitir criar novos cotnatos', async () => {
  
         const contactData = {
             contacts: [

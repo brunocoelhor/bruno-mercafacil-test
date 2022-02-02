@@ -34,13 +34,11 @@ export function ensureAuthenticated(request:Request, response:Response, next:Nex
 
         request.username = username;
 
-    return next();
-  } catch (error) {
-    return response.status(401).json({
-      message: 'Token invalid'
-    });
-  }
-
-  
+        return next();
+    }  catch (error) {
+        return response.status(401).json({
+            message: 'Token invalid'
+        });
+    }
 
 }

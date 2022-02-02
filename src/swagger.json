@@ -61,7 +61,27 @@
                         }
                     }
                 }
-            }            
+            },
+            "get": {
+                "description": "Searching all contacts",
+                "summary": "This route is responsible for searching all cities",
+                "tags": ["Contatos"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                    "$ref": "#/components/schemas/Contact"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {

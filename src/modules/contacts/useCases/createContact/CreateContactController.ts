@@ -7,7 +7,12 @@ export class CreateContactController {
   async handle(request: Request, response: Response) {
     const data = request.body.contacts; 
     const client = 'varejao';
-    // const client = 'macapa';    
+    // const client = 'macapa';
+
+    Object.keys(data).forEach((k) => {
+      if (data[k].name.trim().length === 0)
+        throw new Error('Name is required');
+    });
     
     const contacts = data.map((contact) => ({
         nome: formatName(contact.name,client),
